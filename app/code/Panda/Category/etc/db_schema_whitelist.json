@@ -1,0 +1,22 @@
+{
+    "panda_category": {
+        "column": {
+            "id": true,
+            "created_at": true,
+            "name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "panda_category_post": {
+        "column": {
+            "id": true,
+            "post_id": true,
+            "category_id": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

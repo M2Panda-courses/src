@@ -1,0 +1,23 @@
+{
+    "panda_tag": {
+        "column": {
+            "id": true,
+            "created_at": true,
+            "name": true,
+            "popularity": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "panda_tag_post": {
+        "column": {
+            "id": true,
+            "post_id": true,
+            "tag_id": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
