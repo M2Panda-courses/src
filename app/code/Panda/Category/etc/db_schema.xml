@@ -11,4 +11,15 @@
             <column name="id"/>
         </constraint>
     </table>
+    <table name="panda_category_post" resource="default" engine="innodb" comment="Category post table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"
+                comment="ID"/>
+        <column xsi:type="int" name="post_id" nullable="false"
+                comment="Post ID"/>
+        <column xsi:type="int" name="category_id" nullable="false"
+                comment="Category ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
 </schema>

@@ -347,6 +347,8 @@ return [
         'Magento_WishlistGraphQl' => 1,
         'Magento_WishlistSampleData' => 1,
         'Panda_Blog' => 1,
+        'Panda_Category' => 1,
+        'Panda_Tag' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
         'Temando_ShippingRemover' => 1
