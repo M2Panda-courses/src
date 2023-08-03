@@ -38,4 +38,9 @@ class Tag implements ArgumentInterface
         $id = (int) $this->request->getParam('id');
         return $this->tagRepository->getById($id);
     }
+
+    public function getTag($id): TagInterface
+{
+    return $this->tagRepository->getById((int) $id);
+}
 }

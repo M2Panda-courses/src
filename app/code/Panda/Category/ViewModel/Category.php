@@ -38,4 +38,9 @@ class Category implements ArgumentInterface
         $id = (int) $this->request->getParam('id');
         return $this->categoryRepository->getById($id);
     }
+
+    public function getCategory($id): CategoryInterface
+    {
+        return $this->categoryRepository->getById((int) $id);
+    }
 }
