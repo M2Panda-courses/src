@@ -7,7 +7,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Panda\Category\Api\Data\CategoryInterface;
 use Panda\Category\Api\Data\CategoryRepositoryInterface;
 use Panda\Category\Model\ResourceModel\Category\Collection;
-use \Magento\Framework\Exception\LocalizedException;
+use Panda\Blog\Model\ResourceModel\Post\Collection as PostCollection;
 
 class Category implements ArgumentInterface
 {
@@ -15,6 +15,7 @@ class Category implements ArgumentInterface
         private Collection $collection,
         private CategoryRepositoryInterface $categoryRepository,
         private RequestInterface $request,
+        private PostCollection $postCollection,
     ) {}
 
     /**
@@ -37,5 +38,16 @@ class Category implements ArgumentInterface
     {
         $id = (int) $this->request->getParam('id');
         return $this->categoryRepository->getById($id);
+    }
+
+    public function getCategory($id): CategoryInterface
+    {
+        return $this->categoryRepository->getById((int) $id);
+    }
+
+    public function getPosts(): PostCollection
+    {
+        $id = (int) $this->request->getParam('id');
+        return $this->postCollection->addFieldToFilter('categories', $id);
     }
 }

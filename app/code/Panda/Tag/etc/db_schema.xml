@@ -12,4 +12,15 @@
             <column name="id"/>
         </constraint>
     </table>
+    <table name="panda_tag_post" resource="default" engine="innodb" comment="Tag post table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"
+                comment="ID"/>
+        <column xsi:type="int" name="post_id" nullable="false"
+                comment="Post ID"/>
+        <column xsi:type="int" name="tag_id" nullable="false"
+                comment="Tag ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
 </schema>
