@@ -6,23 +6,21 @@
 /** @var DateTime $currentTime */
 $categoryVm = $block->getData('category_vm');
 $category = $categoryVm->getDetail();
-$currentDateTime = new DateTime();
-$dateTime = new DateTime();
-$timestamp = strtotime($category->getCreatedAt());
-$dateTime->setTimestamp($timestamp);
-$diff = $currentDateTime->diff($dateTime);
+$posts = $categoryVm->getPosts();
 ?>
 
 <div class="category-category-detail">
     <h1><?= $escaper->escapeHtml($category->getName()) ?></h1>
     <p>
         <em>
-            <?php
-            echo "Дата створення: ";
-            if ($diff->days > 0) {echo __($diff->days . ' днів тому');}
-            else {echo __($diff->format('%h годин тому'));}
-            ?>
-
+            Posts:
         </em>
+        <?php foreach ($posts as $post): ?>
+            <li>
+                <a href="<?= $block->getUrl('blog/post/detail', ['id' => $post->getData('id')]) ?>">
+                    <?= $escaper->escapeHtml($post->getData('title')) ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
     </p>
 </div>
