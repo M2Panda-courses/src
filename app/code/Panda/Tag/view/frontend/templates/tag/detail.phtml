@@ -1,0 +1,28 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var Panda\Tag\ViewModel\Tag $tagVm */
+/** @var DateTime $dateTime */
+/** @var DateTime $currentTime */
+$tagVm = $block->getData('tag_vm');
+$tag = $tagVm->getDetail();
+$currentDateTime = new DateTime();
+$dateTime = new DateTime();
+$timestamp = strtotime($tag->getCreatedAt());
+$dateTime->setTimestamp($timestamp);
+$diff = $currentDateTime->diff($dateTime);
+?>
+
+<div class="tag-detail">
+    <h1><?= $escaper->escapeHtml($tag->getName()) ?></h1>
+    <p>
+        <em>
+            <?php
+            echo "Дата створення: ";
+            if ($diff->days > 0) {echo __($diff->days . ' днів тому');}
+            else {echo __($diff->format('%h годин тому'));}
+            ?>
+
+        </em>
+    </p>
+</div>

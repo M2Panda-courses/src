@@ -1,0 +1,28 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
+/** @var Panda\Category\ViewModel\Category $categoryVm */
+/** @var DateTime $dateTime */
+/** @var DateTime $currentTime */
+$categoryVm = $block->getData('category_vm');
+$category = $categoryVm->getDetail();
+$currentDateTime = new DateTime();
+$dateTime = new DateTime();
+$timestamp = strtotime($category->getCreatedAt());
+$dateTime->setTimestamp($timestamp);
+$diff = $currentDateTime->diff($dateTime);
+?>
+
+<div class="category-category-detail">
+    <h1><?= $escaper->escapeHtml($category->getName()) ?></h1>
+    <p>
+        <em>
+            <?php
+            echo "Дата створення: ";
+            if ($diff->days > 0) {echo __($diff->days . ' днів тому');}
+            else {echo __($diff->format('%h годин тому'));}
+            ?>
+
+        </em>
+    </p>
+</div>
